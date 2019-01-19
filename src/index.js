@@ -7,7 +7,11 @@ import ReduxThunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 
 import reducers from './reducers';
+
 import PostsIndex from './components/PostsIndex';
+import PostsNew from './components/PostsNew';
+
+import 'semantic-ui-css/semantic.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSIONS_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(ReduxThunk, ReduxPromise)));
@@ -16,7 +20,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <Route path="/" component={PostsIndex} />
+        <Route path="/" component={PostsIndex} exact />
+        <Route path="/posts/new" component={PostsNew} exact />
       </div>
     </BrowserRouter>
   </Provider>,
