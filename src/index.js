@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { BrowserRouter, Route, History } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 
