@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 
 import reducers from './reducers';
@@ -20,8 +20,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <div>
-        <Route path="/" component={PostsIndex} exact />
-        <Route path="/posts/new" component={PostsNew} exact />
+        <Switch>
+          <Route path="/posts/new" component={PostsNew} exact />
+          <Route path="/" component={PostsIndex} exact />
+        </Switch>
       </div>
     </Router>
   </Provider>,
