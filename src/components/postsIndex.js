@@ -1,12 +1,16 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import { deletePost, fetchPosts } from '../actions';
 
 class PostsIndex extends Component {
   componentDidMount() {
     this.props.fetchPosts();
   }
+
+  removePost = e => {
+    this.props.deletePost(e.target.id);
+  };
 
   renderPosts() {
     return _.reverse(
@@ -17,6 +21,7 @@ class PostsIndex extends Component {
               <div className="header">{post.title}</div>
               <div className="meta">{post.categories}</div>
               <div className="description">{post.content}</div>
+              <i className="trash alternate outline icon" id={post.id} onClick={this.removePost} />
             </div>
           </li>
         );
@@ -46,5 +51,5 @@ const mapStateToProps = ({ posts }) => {
 
 export default connect(
   mapStateToProps,
-  { fetchPosts }
+  { deletePost, fetchPosts }
 )(PostsIndex);
