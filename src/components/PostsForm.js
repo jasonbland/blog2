@@ -3,11 +3,12 @@ import { Field, reduxForm } from 'redux-form';
 
 class PostsForm extends React.Component {
   renderError({ error, touched }) {
-    console.log(error);
     if (touched && error) {
       return (
-        <div className="ui error message">
-          <div className="header">(error)</div>
+        <div className="ui message">
+          <div className="header" style={{ color: 'black' }}>
+            {error}
+          </div>
         </div>
       );
     }
