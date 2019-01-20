@@ -2,11 +2,24 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class PostsForm extends React.Component {
-  renderInput = ({ input, label }) => {
+  renderError({ error, touched }) {
+    console.log(error);
+    if (touched && error) {
+      return (
+        <div className="ui error message">
+          <div className="header">(error)</div>
+        </div>
+      );
+    }
+  }
+
+  renderInput = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
+        {this.renderError(meta)}
       </div>
     );
   };
@@ -27,22 +40,22 @@ class PostsForm extends React.Component {
   }
 }
 
-// const validate = formValues => {
-//   const errors = {};
+const validate = formValues => {
+  const errors = {};
 
-//   if (!formValues.title) {
-//     errors.title = 'You must enter a title';
-//   }
+  if (!formValues.title) {
+    errors.title = 'You must enter a title';
+  }
 
-//   if (!formValues.categories) {
-//     errors.categories = 'You must enter a description';
-//   }
+  if (!formValues.categories) {
+    errors.categories = 'You must enter a description';
+  }
 
-//   if (!formValues.content) {
-//     errors.content = 'You must enter a content';
-//   }
+  if (!formValues.content) {
+    errors.content = 'You must enter a content';
+  }
 
-//   return errors;
-// };
+  return errors;
+};
 
-export default reduxForm({ form: 'postsNew' })(PostsForm);
+export default reduxForm({ form: 'postsNew', validate })(PostsForm);
