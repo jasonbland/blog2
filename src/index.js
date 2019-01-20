@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 
@@ -10,6 +10,7 @@ import reducers from './reducers';
 
 import PostsIndex from './components/PostsIndex';
 import PostsNew from './components/PostsNew';
+import history from './history';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -18,12 +19,12 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(ReduxThunk,
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <div>
         <Route path="/" component={PostsIndex} exact />
         <Route path="/posts/new" component={PostsNew} exact />
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.querySelector('#root')
 );

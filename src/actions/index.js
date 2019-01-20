@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import history from '../history';
+
 export const FETCH_POSTS = 'fetch_posts';
 export const CREATE_POST = 'create_post';
 
@@ -15,11 +17,9 @@ export function fetchPosts() {
   };
 }
 
-export function createPost(data) {
-  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, data);
+export const createPost = data => async dispatch => {
+  const request = await axios.post(`${ROOT_URL}/posts${API_KEY}`, data);
 
-  return {
-    type: CREATE_POST,
-    payload: request
-  };
-}
+  dispatch({ type: CREATE_POST, payload: request });
+  history.push('/');
+};

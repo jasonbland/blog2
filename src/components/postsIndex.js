@@ -9,17 +9,19 @@ class PostsIndex extends Component {
   }
 
   renderPosts() {
-    return _.map(this.props.posts, post => {
-      return (
-        <li className="ui raised link card" key={post.id}>
-          <div className="content">
-            <div className="header">{post.title}</div>
-            <div className="meta">{post.categories}</div>
-            <div className="description">{post.content}</div>
-          </div>
-        </li>
-      );
-    });
+    return _.reverse(
+      _.map(this.props.posts, post => {
+        return (
+          <li className="ui raised link card" key={post.id}>
+            <div className="content">
+              <div className="header">{post.title}</div>
+              <div className="meta">{post.categories}</div>
+              <div className="description">{post.content}</div>
+            </div>
+          </li>
+        );
+      })
+    );
   }
 
   render() {

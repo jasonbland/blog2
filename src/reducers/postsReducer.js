@@ -6,7 +6,6 @@ export default (state = {}, action) => {
     case FETCH_POSTS:
       return _.mapKeys(action.payload.data, 'id');
     case CREATE_POST:
-      console.log(action.payload);
       return state;
     default:
       return state;
