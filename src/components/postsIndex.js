@@ -18,7 +18,9 @@ class PostsIndex extends Component {
       return (
         <li className="ui raised link card" key={post.id}>
           <div className="content">
-            <div className="header">{post.title}</div>
+            <Link to={`/posts/show/${post.id}`}>
+              <div className="header">{post.title}</div>
+            </Link>
             <div className="meta">{post.categories}</div>
             <div className="description">{post.content}</div>
             <i className="trash alternate outline icon" id={post.id} onClick={this.removePost} />

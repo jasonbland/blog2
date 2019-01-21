@@ -24,10 +24,14 @@ export const createPost = data => async dispatch => {
   history.push('/');
 };
 
-export const deletePost = id => async dispatch => {
+export const deletePost = (id, callback) => async dispatch => {
   const request = await axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
 
   dispatch({ type: DELETE_POST, payload: request });
+
+  if (callback) {
+    callback();
+  }
 };
 
 export const fetchPost = id => async dispatch => {
