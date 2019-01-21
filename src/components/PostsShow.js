@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPost } from '../actions';
 
 class PostsShow extends React.Component {
@@ -17,6 +18,7 @@ class PostsShow extends React.Component {
 
     return (
       <div>
+        <Link to="/">Back to Index</Link>
         <h3>{post.title}</h3>
         <h6>Categories: {post.categoris}</h6>
         <p>{post.content}</p>
@@ -26,7 +28,6 @@ class PostsShow extends React.Component {
 }
 
 const mapStateToProps = ({ posts }, ownProps) => {
-  // console.log(posts);
   return {
     post: posts[ownProps.match.params.id]
   };
