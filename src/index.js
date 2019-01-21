@@ -9,6 +9,7 @@ import reducers from './reducers';
 
 import PostsIndex from './components/PostsIndex';
 import PostsNew from './components/PostsNew';
+import PostsShow from './components/PostsShow';
 import history from './history';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -22,6 +23,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/posts/new" component={PostsNew} exact />
+          <Route path="/posts/:id" component={PostsShow} exact />
           <Route path="/" component={PostsIndex} exact />
         </Switch>
       </div>

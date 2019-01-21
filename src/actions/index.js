@@ -4,6 +4,7 @@ import history from '../history';
 
 export const CREATE_POST = 'create_post';
 export const DELETE_POST = 'delete_post';
+export const FETCH_POST = 'fetch_post';
 export const FETCH_POSTS = 'fetch_posts';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
@@ -27,6 +28,12 @@ export const deletePost = id => async dispatch => {
   const request = await axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
 
   dispatch({ type: DELETE_POST, payload: request });
+};
+
+export const fetchPost = id => async dispatch => {
+  const request = await axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  dispatch({ type: FETCH_POSTS, payload: request });
 };
 
 // http://reduxblog.herokuapp.com/api/posts/305350?key=BLUESPIN
