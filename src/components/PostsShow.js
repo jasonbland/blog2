@@ -9,11 +9,24 @@ class PostsShow extends React.Component {
   }
 
   render() {
-    return <div>Posts show!</div>;
+    const { post } = this.props;
+
+    if (!post) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <div>
+        <h3>{post.title}</h3>
+        <h6>Categories: {post.categoris}</h6>
+        <p>{post.content}</p>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = ({ posts }, ownProps) => {
+  // console.log(posts);
   return {
     post: posts[ownProps.match.params.id]
   };

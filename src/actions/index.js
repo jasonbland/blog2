@@ -33,7 +33,7 @@ export const deletePost = id => async dispatch => {
 export const fetchPost = id => async dispatch => {
   const request = await axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
 
-  dispatch({ type: FETCH_POSTS, payload: request });
+  dispatch({ type: FETCH_POST, payload: request });
 };
 
 // http://reduxblog.herokuapp.com/api/posts/305350?key=BLUESPIN
