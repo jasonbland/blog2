@@ -6,10 +6,8 @@ class PostsForm extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
       return (
-        <div className="ui message">
-          <div className="header" style={{ color: 'black' }}>
-            {error}
-          </div>
+        <div className="ui input error">
+          <div className="header">{error}</div>
         </div>
       );
     }
@@ -32,7 +30,7 @@ class PostsForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form">
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
         <Field name="title" component={this.renderInput} label="Title" />
         <Field name="categories" component={this.renderInput} label="Categories" />
         <Field name="content" component={this.renderInput} label="Content" />
