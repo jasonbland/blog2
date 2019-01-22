@@ -25,12 +25,20 @@ class PostsShow extends React.Component {
     }
 
     return (
-      <div>
+      <div className="ui container">
         <Link to="/">Back to Index</Link>
-        <button onClick={this.onDeleteCLick}>Delete Post</button>
-        <h3>{post.title}</h3>
-        <h6>Categories: {post.categoris}</h6>
-        <p>{post.content}</p>
+        <div className="ui one cards">
+          <div className="ui raised card">
+            <div className="content">
+              <div className="header">{post.title}</div>
+              <div className="meta">Categories: {post.categories}</div>
+              <p className="description">{post.content}</p>
+              <button className="ui button primary right floated" onClick={this.onDeleteCLick}>
+                Delete Post
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

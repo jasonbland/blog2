@@ -23,7 +23,12 @@ class PostsIndex extends Component {
             </Link>
             <div className="meta">{post.categories}</div>
             <div className="description">{post.content}</div>
-            <i className="trash alternate outline icon" id={post.id} onClick={this.removePost} />
+            <i
+              className="trash alternate outline icon right floated"
+              id={post.id}
+              onClick={this.removePost}
+              style={{ fontSize: '20px' }}
+            />
           </div>
         </li>
       );
